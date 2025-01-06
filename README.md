@@ -7,6 +7,7 @@
 + avancer
 + détecter
 + tourner
++ rester statique
 
 @@ Attaque: @@
   foncer lorsqu'il détecte une présence
@@ -16,6 +17,6 @@
 @@ Défense: @@
   s'arrête lorsque qu'il détecte les lignes du dohyo
     -> tourner de 180 degrés lorsque c'est le cas
-  reculer, battre en retraite
+  reculer, battre en retraite (récupérer son emplacement initial - le centre après avoir reçu un coup)
 
 ```
