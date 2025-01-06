@@ -4,9 +4,9 @@
 
 ```diff
 
-! avancer
-! détecter
-! tourner
++ avancer
++ détecter
++ tourner
 
 - Attaque:
   foncer lorsqu'il détecte une présence
