@@ -1,5 +1,5 @@
-# sumo
-projet robot sumo SI
+# Projet sumo SI
+
 Attaque:
 
 Défense:
