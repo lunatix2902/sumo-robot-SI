@@ -1,5 +1,5 @@
 # Projet sumo SI
 
-Attaque:
+## Attaque:
 
-Défense:
+## Défense:
