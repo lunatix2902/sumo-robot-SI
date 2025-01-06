@@ -1,10 +1,12 @@
 # Projet sumo SI
 
 ### fonctionnalités de base
-  avancer-tourner
-  détecter
 
 ```diff
+
+  ! avancer-tourner
+  ! détecter
+
 - Attaque:
   foncer lorsqu'il détecte une présence
   il va chercher l'adversaire
