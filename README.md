@@ -2,12 +2,15 @@
 
 ### fonctionnalités de base
 
+ce sumo est un buffle.
+
 ```diff
 
 + avancer
 + détecter
 + tourner
 + rester statique
++ cabrer comme un buffle en rodéo
 
 @@ Attaque: @@
   foncer lorsqu'il détecte une présence
