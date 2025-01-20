@@ -82,10 +82,10 @@ def codo_move(direction, speed = 1023):
     raise ValueError('The speed of codo motors have to be set between 0 and 255')
 
 while True:
-  if getUltrasonicData(pin1, pin1, 'distance') < 1:
+  if getUltrasonicData(pin0, pin0, 'distance') < 1:
     codo_move('stop')
-    if pin1.read_digital() == True:
-      while pin1.read_digital() == True:
+    if pin8.read_digital() == True:
+      while pin8.read_digital() == True:
         codo_move('forward', 1023)
     else:
       codo_move('stop')
