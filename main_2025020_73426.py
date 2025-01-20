@@ -11,27 +11,20 @@ def avancer():
   codo_move('forwars',1023)
   
 
-def reculer():
-  robot.set_motors_speed(-50, -50)
+
 
 
 def stop_robot():
-  robot.set_motors_speed(0, 0)
+  codo_move('stop')
   
 
-def detecter_presence():
 
-  return ultrason.get_distance() <= distance_seuil
 
 def detecter_ligne():
-  
-  return not ligne_gauche.get_line_detected() and not ligne_droite.get_line_detected()
+   #a faire
 
 
 
-ultrason = robot.ultrasonic_sensor()
-ligne_gauche = robot.line_sensor_left()
-ligne_droite = robot.line_sensor_right()
 
 distance_seuil = 0.8
 
