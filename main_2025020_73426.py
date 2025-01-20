@@ -4,7 +4,7 @@
 from microbit import *
 
 def tourner_sur_place():
-  codo_move('forwars',1023)
+  codo_move('right',1023)
   
 
 def avancer():
@@ -26,7 +26,7 @@ def detecter_ligne():
 
 
 
-distance_seuil = 0.8
+distance_max = 0.8
 
 centre_distance = 0.4
 
@@ -42,10 +42,6 @@ while True:
   if detecter_ligne():
     stop_robot()
     time.sleep(0.5)
-    
-    robot.set_motors_speed(-50, 50)
-    
-    time.sleep(1.8)
     
     stop_robot()
     avancer()
