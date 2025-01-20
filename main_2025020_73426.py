@@ -4,11 +4,11 @@
 from microbit import *
 
 def tourner_sur_place():
-  robot.set_motors_speed(-50, 50)
+  codo_move('forwars',1023)
   
 
 def avancer():
-  robot.set_motors_speed(50, 50)
+  codo_move('forwars',1023)
   
 
 def reculer():
