@@ -58,7 +58,7 @@ def codo_move(direction, speed = 1023):
 
 while True:
   while pin12.read_digital() == True or pin8.read_digital() == True:
-    while not getUltrasonicData(pin0, pin0, 'duration') > 250:
+    while getUltrasonicData(pin0, pin0, 'duration') < 250:
       codo_move('right', 250)
       codo_move('stop')
       utime.sleep(1)
@@ -67,5 +67,7 @@ while True:
       codo_move('right', 650)
       utime.sleep(0.75)
       codo_move('forward', 800)
-      utime.sleep(1)
+      codo_move('stop')
       codo_move('right', 800)
+      
+
