@@ -66,16 +66,23 @@ while True:
         # Vérifier la distance avec le capteur ultrasonique
         distance = getUltrasonicData(pin0, pin0, 'distance')
         
-        if distance > 0 and distance < 10:  # Si un adversaire est détecté à moins de 10 cm
+        if distance > 0 and distance < 80:  # Si un adversaire est détecté à moins de 80 cm
             # Avancer pour attaquer
+            
             codo_move('forward', 1023)
-            utime.sleep(1)  # Durée de l'attaque
+            utime.sleep(2)  # Durée de l'attaque
             codo_move('stop')
+            
+            if pin12.read_digital() == True and pin8.read_digital == True: 
             
             # Reculer pour battre en retraite
             codo_move('backward', 800)
             utime.sleep(1)  # Durée de la retraite
             codo_move('stop')
+            
+            else:
+              codo_move('forward', 1023)
+              utime.sleep(2.5)
             
             # Se repositionner en tournant
             codo_move('right', 800)
