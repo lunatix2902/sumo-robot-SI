@@ -1,0 +1,242 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36" version="26.0.7">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="956" dy="497" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="zkfFHV4jXpPFQw0GAbJ--0" value="détection adversaire" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="20" y="130" width="160" height="138" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="id = &quot;1&quot;&lt;div&gt;&lt;br&gt;&lt;div&gt;text = &quot;les détecteurs ultrasonique sont chargé de détecter l&#39;adversaire lorsqu&#39;il se trouve devant le robot a moins de 80com&lt;/div&gt;&lt;/div&gt;" placeholders="1" name="Variable" id="rlI9Sp6B_YGQoDF5TvWX-7">
+          <mxCell style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="zkfFHV4jXpPFQw0GAbJ--0">
+            <mxGeometry y="26" width="160" height="90" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-4" value="" style="group" vertex="1" connectable="0" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="250" y="40" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-2" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="rlI9Sp6B_YGQoDF5TvWX-4">
+          <mxGeometry width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-3" value="Robot Sumo" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" vertex="1" parent="rlI9Sp6B_YGQoDF5TvWX-4">
+          <mxGeometry x="80" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-6" value="Déplacement" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="600" y="130" width="160" height="138" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="id = &quot;2&quot;&lt;div&gt;&lt;br&gt;&lt;div&gt;text = &quot;Les moteurs permettent de se deplacer&quot;&lt;/div&gt;&lt;/div&gt;" placeholders="1" name="Variable" id="rlI9Sp6B_YGQoDF5TvWX-8">
+          <mxCell style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="rlI9Sp6B_YGQoDF5TvWX-6">
+            <mxGeometry y="26" width="160" height="64" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-24" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="rlI9Sp6B_YGQoDF5TvWX-6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint y="150" as="sourcePoint" />
+            <mxPoint x="-120" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-11" value="Détection des lignes" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="310" y="300" width="160" height="138" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="id = &quot;3&quot;&lt;div&gt;&lt;br&gt;&lt;div&gt;text = &quot;Les detecteurs infrarouges sont chargé de detecter les les lignes de dohyo&quot;&quot;&lt;/div&gt;&lt;/div&gt;" placeholders="1" name="Variable" id="rlI9Sp6B_YGQoDF5TvWX-12">
+          <mxCell style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="rlI9Sp6B_YGQoDF5TvWX-11">
+            <mxGeometry y="26" width="160" height="90" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-17" value="Budget" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="200" y="130" width="160" height="138" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="id = &quot;4&quot;&lt;div&gt;&lt;br&gt;&lt;div&gt;text = &quot;0, uniquement avec les éléments a notre disposition&quot;&lt;/div&gt;&lt;/div&gt;" placeholders="1" name="Variable" id="rlI9Sp6B_YGQoDF5TvWX-18">
+          <mxCell style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="rlI9Sp6B_YGQoDF5TvWX-17">
+            <mxGeometry y="26" width="160" height="74" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-19" value="caractéristiques physique" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="520" y="300" width="160" height="138" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="id = &quot;5&quot;&lt;div&gt;&lt;br&gt;&lt;div&gt;text = &quot;dimension :&amp;nbsp;&amp;nbsp;&lt;/div&gt;&lt;div&gt;Longueur = 12.5cm&lt;/div&gt;&lt;div&gt;largeur = 9.5cm&lt;/div&gt;&lt;div&gt;hauteur = 8.5cm&quot;&lt;/div&gt;&lt;/div&gt;" placeholders="1" name="Variable" id="rlI9Sp6B_YGQoDF5TvWX-20">
+          <mxCell style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="rlI9Sp6B_YGQoDF5TvWX-19">
+            <mxGeometry y="26" width="160" height="94" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-22" value="" style="endArrow=none;html=1;rounded=0;entryX=0.587;entryY=0.975;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="rlI9Sp6B_YGQoDF5TvWX-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="389" y="300" as="sourcePoint" />
+            <mxPoint x="439" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-23" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="300" as="sourcePoint" />
+            <mxPoint x="600" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-25" value="" style="endArrow=none;html=1;rounded=0;entryX=0.821;entryY=1.008;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="rlI9Sp6B_YGQoDF5TvWX-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="480" y="280" as="sourcePoint" />
+            <mxPoint x="481" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-28" value="" style="endArrow=none;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="rlI9Sp6B_YGQoDF5TvWX-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="680" y="130" as="sourcePoint" />
+            <mxPoint x="550" y="80" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="680" y="60" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-29" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="280" y="130" as="sourcePoint" />
+            <mxPoint x="280" y="81" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-31" value="" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="rlI9Sp6B_YGQoDF5TvWX-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="100" y="130" as="sourcePoint" />
+            <mxPoint x="100" y="30" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="100" y="60" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-33" value="Détection des lignes" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="500" y="540" width="160" height="138" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="id = &quot;3&quot;&lt;div&gt;&lt;br&gt;&lt;div&gt;text = &quot;Les detecteurs infrarouges sont chargé de detecter les les lignes de dohyo&quot;&quot;&lt;/div&gt;&lt;/div&gt;" placeholders="1" name="Variable" id="rlI9Sp6B_YGQoDF5TvWX-34">
+          <mxCell style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="rlI9Sp6B_YGQoDF5TvWX-33">
+            <mxGeometry y="26" width="160" height="90" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-35" value="Détection des lignes" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="680" y="540" width="160" height="138" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="id = &quot;3&quot;&lt;div&gt;&lt;br&gt;&lt;div&gt;text = &quot;Les detecteurs infrarouges sont chargé de detecter les les lignes de dohyo&quot;&quot;&lt;/div&gt;&lt;/div&gt;" placeholders="1" name="Variable" id="rlI9Sp6B_YGQoDF5TvWX-36">
+          <mxCell style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="rlI9Sp6B_YGQoDF5TvWX-35">
+            <mxGeometry y="26" width="160" height="90" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-37" value="Détection des lignes" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="320" y="540" width="160" height="138" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="id = &quot;3&quot;&lt;div&gt;&lt;br&gt;&lt;div&gt;text = &quot;Les detecteurs infrarouges sont chargé de detecter les les lignes de dohyo&quot;&quot;&lt;/div&gt;&lt;/div&gt;" placeholders="1" name="Variable" id="rlI9Sp6B_YGQoDF5TvWX-38">
+          <mxCell style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="rlI9Sp6B_YGQoDF5TvWX-37">
+            <mxGeometry y="26" width="160" height="90" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-39" value="façon de detecter" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="80" y="350" width="160" height="138" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="id = &quot;2.1&quot;&lt;div&gt;&lt;br&gt;&lt;div&gt;text = &quot;le robot tourne sur lui-même jusqu&#39;à ce qu&#39;il détecte son adversaire&quot;&lt;/div&gt;&lt;/div&gt;" placeholders="1" name="Variable" id="rlI9Sp6B_YGQoDF5TvWX-40">
+          <mxCell style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="rlI9Sp6B_YGQoDF5TvWX-39">
+            <mxGeometry y="26" width="160" height="90" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-41" value="Détection des lignes" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="80" y="540" width="160" height="138" as="geometry">
+            <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="id = &quot;3&quot;&lt;div&gt;&lt;br&gt;&lt;div&gt;text = &quot;Les detecteurs infrarouges sont chargé de detecter les les lignes de dohyo&quot;&quot;&lt;/div&gt;&lt;/div&gt;" placeholders="1" name="Variable" id="rlI9Sp6B_YGQoDF5TvWX-42">
+          <mxCell style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;" vertex="1" parent="rlI9Sp6B_YGQoDF5TvWX-41">
+            <mxGeometry y="26" width="160" height="90" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-45" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="zkfFHV4jXpPFQw0GAbJ--0">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="160" y="350" as="sourcePoint" />
+            <mxPoint x="50" y="300" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="160" y="300" />
+              <mxPoint x="100" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-56" value="&quot;Refine&quot;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="rlI9Sp6B_YGQoDF5TvWX-45">
+          <mxGeometry x="0.2019" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-46" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="rlI9Sp6B_YGQoDF5TvWX-6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="760" y="538" as="sourcePoint" />
+            <mxPoint x="710" y="310" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="760" y="330" />
+              <mxPoint x="720" y="330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-54" value="&quot;Refine&quot;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="rlI9Sp6B_YGQoDF5TvWX-46">
+          <mxGeometry x="0.4882" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-49" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="540" as="sourcePoint" />
+            <mxPoint x="700" y="270" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="400" y="480" />
+              <mxPoint x="700" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-52" value="&quot;Refine&quot;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="rlI9Sp6B_YGQoDF5TvWX-49">
+          <mxGeometry x="-0.4854" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-50" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="580" y="538" as="sourcePoint" />
+            <mxPoint x="710" y="270" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="580" y="490" />
+              <mxPoint x="710" y="490" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-53" value="&quot;Refine&quot;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="rlI9Sp6B_YGQoDF5TvWX-50">
+          <mxGeometry x="-0.4539" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-51" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="rlI9Sp6B_YGQoDF5TvWX-11">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="160" y="540" as="sourcePoint" />
+            <mxPoint x="350" y="500" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="160" y="510" />
+              <mxPoint x="350" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rlI9Sp6B_YGQoDF5TvWX-55" value="&quot;Refine&quot;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="rlI9Sp6B_YGQoDF5TvWX-51">
+          <mxGeometry x="-0.1507" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
