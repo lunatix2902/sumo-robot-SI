@@ -75,10 +75,10 @@ while True:
             
             if pin12.read_digital() == True and pin8.read_digital == True: 
             
-            # Reculer pour battre en retraite
-            codo_move('backward', 800)
-            utime.sleep(1)  # Durée de la retraite
-            codo_move('stop')
+                # Reculer pour battre en retraite
+                codo_move('backward', 800)
+                utime.sleep(1)  # Durée de la retraite
+                codo_move('stop')
             
             else:
               codo_move('forward', 1023)
