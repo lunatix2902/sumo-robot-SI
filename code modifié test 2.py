@@ -2,22 +2,23 @@ from microbit import *
 from machine import time_pulse_us
 import utime
 
-# Capteur ultrasonique (trigger et echo) sur pin0
-# Détecteurs de ligne sur pin12 et pin8
+# Capteur de ligne sur pin12
+# Capteur ultrasonique Grove (trigger et echo sur le même pin) sur pin0
 
-# Fonction pour mesurer la distance avec le capteur ultrasonique
-def getUltrasonicData(trig_echo, timeout_us=30000):
-    trig_echo.write_digital(0)
+# Fonction pour obtenir la distance mesurée par le capteur ultrasonique
+def getUltrasonicData(pin, timeout_us=30000):
+    pin.write_digital(0)
     utime.sleep_us(2)
-    trig_echo.write_digital(1)
+    pin.write_digital(1)
     utime.sleep_us(10)
-    trig_echo.write_digital(0)
-    duration = time_pulse_us(trig_echo, 1, timeout_us) / 1e6  # Temps en secondes
+    pin.write_digital(0)
+    
+    duration = time_pulse_us(pin, 1, timeout_us) / 1e6  # Temps en secondes
     if duration > 0:
-        # Calcul de la distance en cm (vitesse du son = 343 m/s)
+        # Calculer la distance en cm (vitesse du son 343 m/s, divisé par 2 pour aller-retour)
         return 343 * duration / 2 * 100
     else:
-        return -1
+        return -1  # Retourne -1 si aucune mesure n'est disponible
 
 # Fonctions pour contrôler les moteurs gauche et droit
 def codo_controlLeftMotor(cmd, speed):
@@ -44,46 +45,51 @@ def codo_move(direction, speed=1023):
             codo_controlLeftMotor([1, 0], speed)
             codo_controlRightMotor([0, 1], speed)
         elif direction == 'stop':
-            codo_controlLeftMotor([0, 0], speed)
-            codo_controlRightMotor([0, 0], speed)
+            codo_controlLeftMotor([0, 0], 0)
+            codo_controlRightMotor([0, 0], 0)
         else:
-            display.scroll("'" + str(direction) + "' is not a valid direction")
+            display.scroll("'" + str(direction) + "' is not a direction")
     else:
-        raise ValueError("Speed must be between 0 and 1023")
+        raise ValueError('The speed of codo motors must be set between 0 and 1023')
 
 # Boucle principale
 while True:
-    # Si les deux capteurs de ligne détectent que le robot est encore dans l'arène
-    if pin12.read_digital() == 1 and pin8.read_digital() == 1:
-        # Mesurer la distance avec le capteur ultrasonique
+    # Vérifier l'état des capteurs de ligne
+    if pin12.read_digital() == 1:  # Si toujours sur l'arène
+        codo_move('stop')  # Stop en attendant un adversaire
+
+        # Vérifier la distance avec le capteur ultrasonique
         distance = getUltrasonicData(pin0)
 
-        if 0 < distance < 80:  # Adversaire détecté à moins de 80 cm
+        if 0 < distance < 80:  # Si un adversaire est détecté à moins de 80 cm
             # Avancer pour attaquer
             codo_move('forward', 1023)
             utime.sleep(2)  # Durée de l'attaque
             codo_move('stop')
 
-            # Reculer pour se repositionner
-            codo_move('backward', 800)
-            utime.sleep(1)  # Durée de la retraite
-            codo_move('stop')
+            # Vérifier si le robot est encore dans l'arène après l'attaque
+            if pin12.read_digital() == 1:
+                # Reculer pour battre en retraite
+                codo_move('backward', 800)
+                utime.sleep(1)  # Durée de la retraite
+                codo_move('stop')
 
-            # Tourner pour se repositionner
-            codo_move('right', 800)
-            utime.sleep(0.75)  # Ajuster l'angle de rotation
-            codo_move('stop')
-
+                # Se repositionner
+                codo_move('right', 800)
+                utime.sleep(0.75)  # Ajuster l'angle
+                codo_move('stop')
+            else:
+                # Si hors de l'arène, avancer pour revenir
+                codo_move('forward', 1023)
+                utime.sleep(1.5)
+                codo_move('stop')
         else:
-            # Aucun adversaire détecté, faire un mouvement de recherche
+            # Si aucun adversaire détecté, chercher en tournant
             codo_move('right', 600)
             utime.sleep(0.5)
             codo_move('stop')
     else:
-        # Si le robot est proche d'une ligne (hors arène), battre en retraite
+        # Si le robot est hors de l'arène, reculer pour revenir
         codo_move('backward', 800)
-        utime.sleep(1)  # Durée de la retraite
-        codo_move('stop')
-        codo_move('left', 800)  # Tourner pour revenir dans l'arène
-        utime.sleep(0.75)
+        utime.sleep(1)
         codo_move('stop')
