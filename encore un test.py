@@ -1,72 +1,88 @@
 from microbit import *
+from machine import time_pulse_us
 import utime
 
-# Configuration des moteurs (connectés aux broches P1 et P2)
-motor_left = pin1
-motor_right = pin2
+# Line Finder sur pin12 et pin8
+# Capteur ultrasonique (trigger et echo) sur pin0
 
-# Configuration du capteur ultrasonique (connecté à P8 et P12)
-ultrasonic_trigger = pin8
-ultrasonic_echo = pin12
-
-# Fonctions de contrôle des moteurs
-def avancer():
-    motor_left.write_digital(1)
-    motor_right.write_digital(1)
-
-def reculer():
-    motor_left.write_digital(0)
-    motor_right.write_digital(0)
-
-def tourner_gauche():
-    motor_left.write_digital(0)
-    motor_right.write_digital(1)
-
-def tourner_droite():
-    motor_left.write_digital(1)
-    motor_right.write_digital(0)
-
-def stop():
-    motor_left.write_digital(0)
-    motor_right.write_digital(0)
-
-# Fonction pour mesurer la distance avec le capteur ultrasonique
-def mesurer_distance():
-    # Envoi d'une impulsion sur la broche trigger
-    ultrasonic_trigger.write_digital(0)
+# Fonction pour obtenir la distance mesurée par le capteur ultrasonique
+def getUltrasonicData(trig, echo, data='distance', timeout_us=30000):
+    trig.write_digital(0)
     utime.sleep_us(2)
-    ultrasonic_trigger.write_digital(1)
+    trig.write_digital(1)
     utime.sleep_us(10)
-    ultrasonic_trigger.write_digital(0)
+    trig.write_digital(0)
+    echo.read_digital()
+    duration = time_pulse_us(echo, 1, timeout_us) / 1e6  # Temps en secondes
+    if duration > 0:
+        if data == 'distance':
+            # Calculer la distance en cm
+            return 343 * duration / 2 * 100
+        elif data == 'duration':
+            return duration
+        else:
+            raise ValueError("Data option '" + data + "' is not valid")
+    else:
+        return -1
 
-    # Lecture du temps de retour de l'écho
-    while ultrasonic_echo.read_digital() == 0:
-        pass
-    start_time = utime.ticks_us()
+# Fonctions pour contrôler les moteurs gauche et droit
+def codo_controlLeftMotor(cmd, speed):
+    pin13.write_analog(cmd[0] * speed)
+    pin14.write_analog(cmd[1] * speed)
 
-    while ultrasonic_echo.read_digital() == 1:
-        pass
-    end_time = utime.ticks_us()
+def codo_controlRightMotor(cmd, speed):
+    pin15.write_analog(cmd[0] * speed)
+    pin16.write_analog(cmd[1] * speed)
 
-    # Calcul de la distance en centimètres
-    duration = utime.ticks_diff(end_time, start_time)
-    distance = (duration / 2) / 29.1
-    return distance
+# Fonction pour contrôler le mouvement du robot
+def codo_move(direction, speed=1023):
+    if 0 <= speed <= 1023:
+        if direction == 'forward':
+            codo_controlLeftMotor([0, 1], speed)
+            codo_controlRightMotor([0, 1], speed)
+        elif direction == 'backward':
+            codo_controlLeftMotor([1, 0], speed)
+            codo_controlRightMotor([1, 0], speed)
+        elif direction == 'right':
+            codo_controlLeftMotor([0, 1], speed)
+            codo_controlRightMotor([1, 0], speed)
+        elif direction == 'left':
+            codo_controlLeftMotor([1, 0], speed)
+            codo_controlRightMotor([0, 1], speed)
+        elif direction == 'stop':
+            codo_controlLeftMotor([0, 0], speed)
+            codo_controlRightMotor([0, 0], speed)
+        else:
+            display.scroll("'" + str(direction) + "' is not a direction")
+    else:
+        raise ValueError('The speed of codo motors must be set between 0 and 1023')
 
 # Boucle principale
 while True:
-    distance = mesurer_distance()
-    display.scroll(str(int(distance)))
-
-    if distance < 10:  # Si un adversaire est proche (< 10 cm)
-        avancer()
-        sleep(500)
-        stop()
-    elif distance < 20:  # Si un adversaire est détecté à une distance moyenne
-        tourner_droite()  # Préparer une attaque
-        sleep(500)
-        avancer()
-    else:  # Si aucun adversaire n'est détecté
-        reculer()  # Bat en retraite
-        sleep(1000)
-        tourner_gauche()  # Se repositionner
+    # Vérifier l'état des capteurs de ligne
+    while pin12.read_digital() == True and pin8.read_digital() == True:
+        codo_move('stop')  # Stop en attendant un adversaire
+        
+        # Vérifier la distance avec le capteur ultrasonique
+        distance = getUltrasonicData(pin0, pin0, 'distance')
+        
+        if distance > 0 and distance < 10:  # Si un adversaire est détecté à moins de 10 cm
+            # Avancer pour attaquer
+            codo_move('forward', 1023)
+            utime.sleep(1)  # Durée de l'attaque
+            codo_move('stop')
+            
+            # Reculer pour battre en retraite
+            codo_move('backward', 800)
+            utime.sleep(1)  # Durée de la retraite
+            codo_move('stop')
+            
+            # Se repositionner en tournant
+            codo_move('right', 800)
+            utime.sleep(0.75)  # Ajustez la durée pour un bon angle
+            codo_move('stop')
+        else:
+            # Si aucun adversaire détecté, faire un mouvement de recherche
+            codo_move('right', 600)
+            utime.sleep(0.5)
+            codo_move('stop')
