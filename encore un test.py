@@ -1,90 +1,72 @@
-from machine import Pin, PWM
-import time
+from microbit import *
 import utime
 
-# Define motor pins
-left_motor_forward = PWM(Pin(1))
-left_motor_backward = PWM(Pin(2))
-right_motor_forward = PWM(Pin(3))
-right_motor_backward = PWM(Pin(4))
+# Configuration des moteurs (connectés aux broches P1 et P2)
+motor_left = pin1
+motor_right = pin2
 
-# Define sensors
-black_line_left = Pin(8, Pin.IN)    # Left line detector
-black_line_right = Pin(12, Pin.IN)  # Right line detector
+# Configuration du capteur ultrasonique (connecté à P8 et P12)
+ultrasonic_trigger = pin8
+ultrasonic_echo = pin12
 
-# Grove Ultrasonic Sensor (assumes it's on Pin 0)
-trigger = Pin(0, Pin.OUT)
-echo = Pin(0, Pin.IN)
+# Fonctions de contrôle des moteurs
+def avancer():
+    motor_left.write_digital(1)
+    motor_right.write_digital(1)
 
-# Motor speed settings
-MAX_SPEED = 1023
-TURN_SPEED = 500
-BACKWARD_SPEED = 400
-BACKWARD_TIME = 0.5  # Time to move backward when line detected
+def reculer():
+    motor_left.write_digital(0)
+    motor_right.write_digital(0)
 
-# Function to measure distance
-def get_distance():
-    trigger.low()
+def tourner_gauche():
+    motor_left.write_digital(0)
+    motor_right.write_digital(1)
+
+def tourner_droite():
+    motor_left.write_digital(1)
+    motor_right.write_digital(0)
+
+def stop():
+    motor_left.write_digital(0)
+    motor_right.write_digital(0)
+
+# Fonction pour mesurer la distance avec le capteur ultrasonique
+def mesurer_distance():
+    # Envoi d'une impulsion sur la broche trigger
+    ultrasonic_trigger.write_digital(0)
     utime.sleep_us(2)
-    trigger.high()
-    utime.sleep_us(5)
-    trigger.low()
-    
-    while echo.value() == 0:
-        signal_off = utime.ticks_us()
-    
-    while echo.value() == 1:
-        signal_on = utime.ticks_us()
-    
-    time_passed = signal_on - signal_off
-    distance = (time_passed * 0.0343) / 2  # Convert to cm
-    
+    ultrasonic_trigger.write_digital(1)
+    utime.sleep_us(10)
+    ultrasonic_trigger.write_digital(0)
+
+    # Lecture du temps de retour de l'écho
+    while ultrasonic_echo.read_digital() == 0:
+        pass
+    start_time = utime.ticks_us()
+
+    while ultrasonic_echo.read_digital() == 1:
+        pass
+    end_time = utime.ticks_us()
+
+    # Calcul de la distance en centimètres
+    duration = utime.ticks_diff(end_time, start_time)
+    distance = (duration / 2) / 29.1
     return distance
 
-# Motor control functions
-def move_forward(speed=MAX_SPEED):
-    left_motor_forward.duty_u16(speed)
-    right_motor_forward.duty_u16(speed)
-    left_motor_backward.duty_u16(0)
-    right_motor_backward.duty_u16(0)
-
-def move_backward(speed=BACKWARD_SPEED):
-    left_motor_forward.duty_u16(0)
-    right_motor_forward.duty_u16(0)
-    left_motor_backward.duty_u16(speed)
-    right_motor_backward.duty_u16(speed)
-
-def turn_in_place():
-    left_motor_forward.duty_u16(TURN_SPEED)
-    right_motor_backward.duty_u16(TURN_SPEED)
-    left_motor_backward.duty_u16(0)
-    right_motor_forward.duty_u16(0)
-
-def stop_motors():
-    left_motor_forward.duty_u16(0)
-    right_motor_forward.duty_u16(0)
-    left_motor_backward.duty_u16(0)
-    right_motor_backward.duty_u16(0)
-
-# Main loop
+# Boucle principale
 while True:
-    distance = get_distance()
-    line_left = black_line_left.value()
-    line_right = black_line_right.value()
+    distance = mesurer_distance()
+    display.scroll(str(int(distance)))
 
-    if line_left == 1 or line_right == 1:  # If a black line is detected
-        move_backward()
-        time.sleep(BACKWARD_TIME)
-        stop_motors()
-    
-    elif distance > 80:  # If no object detected
-        turn_in_place()
-    
-    else:  # If an object is detected within 80cm
-        move_forward(MAX_SPEED)
-        time.sleep(1)  # Dash forward
-        move_backward()
-        time.sleep(0.5)
-        stop_motors()
-    
-    time.sleep(0.1)  # Small delay to avoid excessive CPU usage
+    if distance < 10:  # Si un adversaire est proche (< 10 cm)
+        avancer()
+        sleep(500)
+        stop()
+    elif distance < 20:  # Si un adversaire est détecté à une distance moyenne
+        tourner_droite()  # Préparer une attaque
+        sleep(500)
+        avancer()
+    else:  # Si aucun adversaire n'est détecté
+        reculer()  # Bat en retraite
+        sleep(1000)
+        tourner_gauche()  # Se repositionner
