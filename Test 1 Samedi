@@ -1,0 +1,78 @@
+from microbit import *
+from machine import time_pulse_us
+import utime
+
+# Line Finder sur pin12 et pin8
+# Capteur ultrasonique (trigger et echo) sur pin0
+
+def getUltrasonicData(trig, echo, data='distance', timeout_us=30000):
+    trig.write_digital(0)
+    utime.sleep_us(2)
+    trig.write_digital(1)
+    utime.sleep_us(10)
+    trig.write_digital(0)
+    echo.read_digital()
+    duration = time_pulse_us(echo, 1, timeout_us) / 1e6
+    if duration > 0:
+        if data == 'distance':
+            return 343 * duration / 2 * 100
+        elif data == 'duration':
+            return duration
+        else:
+            raise ValueError("Data option '" + data + "' is not valid")
+    else:
+        return -1
+
+def codo_controlLeftMotor(cmd, speed):
+    pin13.write_analog(cmd[0] * speed)
+    pin14.write_analog(cmd[1] * speed)
+
+def codo_controlRightMotor(cmd, speed):
+    pin15.write_analog(cmd[0] * speed)
+    pin16.write_analog(cmd[1] * speed)
+
+def codo_move(direction, speed=1023):
+    if 0 <= speed <= 1023:
+        if direction == 'forward':
+            codo_controlLeftMotor([0, 1], speed)
+            codo_controlRightMotor([0, 1], speed)
+        elif direction == 'backward':
+            codo_controlLeftMotor([1, 0], speed)
+            codo_controlRightMotor([1, 0], speed)
+        elif direction == 'right':
+            codo_controlLeftMotor([0, 1], speed)
+            codo_controlRightMotor([1, 0], speed)
+        elif direction == 'left':
+            codo_controlLeftMotor([1, 0], speed)
+            codo_controlRightMotor([0, 1], speed)
+        elif direction == 'stop':
+            codo_controlLeftMotor([0, 0], speed)
+            codo_controlRightMotor([0, 0], speed)
+        else:
+            display.scroll("'" + str(direction) + "' is not a direction")
+    else:
+        raise ValueError('The speed of codo motors must be set between 0 and 1023')
+
+while True:
+    # Recherche d'un adversaire
+    codo_move('right', 600)
+    while True:
+        distance = getUltrasonicData(pin0, pin0, 'distance')
+        if distance > 0 and distance < 80:
+            break
+
+    # Attaque
+    while getUltrasonicData(pin0, pin0, 'distance') < 80:
+        if pin12.read_digital() == False or pin8.read_digital() == False:
+            codo_move('backward', 800)
+            utime.sleep(1)
+            codo_move('right', 800)
+            utime.sleep(0.75)
+        else:
+            codo_move('forward', 1023)
+
+    # Si l'adversaire disparaît, on recule et recommence la recherche
+    codo_move('backward', 800)
+    utime.sleep(1)
+    codo_move('right', 800)
+    utime.sleep(1)
