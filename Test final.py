@@ -4,7 +4,7 @@ import utime
 
 # Line Finder on pin8
 # Ultrasonic on pin1
-
+utime.sleep(5)
 def getUltrasonicData(trig, echo, data='distance', timeout_us=30000):
   trig.write_digital(0)
   utime.sleep_us(2)
